@@ -29,8 +29,8 @@ const postsResolver = {
     },
     Mutation: {
         async createPost(_, { body }, ctx) {
-            console.log('entro en createpost')
-            console.log(body)
+
+
             const user = checkAuth(ctx)
             if (body.trim() === "") {
                 throw new Error("Post body must not be empty")
@@ -42,7 +42,7 @@ const postsResolver = {
                 username: user.username,
                 created_at: new Date().toISOString()
             })
-            console.log(newPost,'newPost')
+
             
             const post = await newPost.save()
             return post
